@@ -1,0 +1,8 @@
+Route::prefix('__slug__')->group(function(){
+    Route::get('/', 'Admin\__capital_name_singular__Controller@index')->name('dashboard.__slug_singular__.index');
+    Route::post('/', 'Admin\__capital_name_singular__Controller@store')->name('dashboard.__slug_singular__.store');
+    Route::get('/create', 'Admin\__capital_name_singular__Controller@create')->name('dashboard.__slug_singular__.create');
+    Route::get('/{id}', 'Admin\__capital_name_singular__Controller@show')->name('dashboard.__slug_singular__.show');
+    Route::put('/{id}', 'Admin\__capital_name_singular__Controller@update')->name('dashboard.__slug_singular__.update');
+    Route::delete('/{id}', 'Admin\__capital_name_singular__Controller@destroy')->name('dashboard.__slug_singular__.destroy');
+});
