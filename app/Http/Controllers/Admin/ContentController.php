@@ -43,6 +43,8 @@ class ContentController extends Controller
             if($type->single){
                 $data['title'] = $type->title;
                 $data['slug'] = $type->slug;
+            }else{
+                $data['slug'] = $type->slug.'/'.$data['slug'];
             }
             $data['fields'] = json_encode($data['fields']);
             Contents::create($data);
