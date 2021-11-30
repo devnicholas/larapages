@@ -93,7 +93,7 @@
 
             <div class="links">
                 <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
+                <a href="https://github.com/devnicholas/larapages">GitHub</a>
             </div>
 
             @if (session('error'))

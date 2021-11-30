@@ -4,7 +4,6 @@ Esse projeto trata-se de uma estrutura utilizando o framework [Laravel](https://
 ## Overview
 ### Requisitos
 O projeto funciona usando o [Laravel 7.x](https://laravel.com/docs/7.x#server-requirements) que já possui seus próprios requisitos. Além deles, é necessário:
-- PHP ^8.0
 - Composer ^2
 - NPM ^6.14
 ### Instalação
