@@ -22,11 +22,11 @@
                                 <label>Título</label>
                                 <input type="text" name="title" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label>Slug</label>
-                                <input type="text" name="slug" class="form-control">
-                            </div>
                         @endif
+                        <div class="form-group">
+                            <label>Slug</label>
+                            <input type="text" name="slug" class="form-control">
+                        </div>
                         <div class="border p-1">
                             @include('components.fields', ['type' => $type])
                         </div>

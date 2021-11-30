@@ -16,7 +16,6 @@ class CreateContentTypesTable extends Migration
         Schema::create('content_types', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->string('template');
             $table->longText('fields');
             $table->boolean('single')->default(false);

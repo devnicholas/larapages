@@ -10,11 +10,10 @@ class ContentTypeController extends Controller
 {
     private $defaultRules = [
         'title' => 'required',
-        'slug' => 'required',
         'template' => 'required',
     ];
     private $fields = [
-        'title', 'slug', 'template', 'fields',
+        'title', 'template', 'fields',
     ];
     private $slugRoutes = 'contenttype';
 

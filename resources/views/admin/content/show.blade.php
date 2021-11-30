@@ -23,11 +23,11 @@
                                 <label>Título</label>
                                 <input type="text" name="title" class="form-control" value="{{ $item->title }}">
                             </div>
-                            <div class="form-group">
-                                <label>Slug</label>
-                                <input type="text" name="slug" class="form-control" value="{{ $item->slug }}">
-                            </div>
                         @endif
+                        <div class="form-group">
+                            <label>Slug</label>
+                            <input type="text" name="slug" class="form-control" value="{{ $item->slug }}">
+                        </div>
                         <div class="border p-1">
                             @include('components.fields', ['type' => $item->contentType, 'item' => $item])
                         </div>

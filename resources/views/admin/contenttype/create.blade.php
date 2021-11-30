@@ -21,10 +21,6 @@
                             <input type="text" name="title" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Slug</label>
-                            <input type="text" name="slug" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>Template</label>
                             <input type="text" name="template" class="form-control">
                         </div>

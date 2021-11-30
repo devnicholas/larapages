@@ -219,14 +219,15 @@ return [
             'icon'          => 'fas fa-fw fa-user',
         ],
         [
-            'text'          => 'Tipos de conteúdo',
-            'route'         => 'dashboard.contenttype.index',
-            'icon'          => 'fas fa-fw fa-file-alt',
-        ],
-        [
             'text'          => 'Conteúdos',
             'route'         => 'dashboard.content.index',
             'icon'          => 'fas fa-fw fa-file-alt',
+        ],
+        [
+            'text'          => 'Tipos de conteúdo',
+            'route'         => 'dashboard.contenttype.index',
+            'icon'          => 'fas fa-fw fa-file-alt',
+            'can'           => 'superAdmin',
         ],
     ],
 

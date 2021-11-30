@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+    // $homeController = new \App\Http\Controllers\HomeController();
+    // return $homeController->content('/');
 });
 
 Auth::routes();
@@ -45,9 +47,11 @@ Route::prefix('dashboard')->middleware('auth.admin')->group(function(){
         Route::post('/', 'Admin\ContentController@store')->name('dashboard.content.store');
         Route::get('/create', 'Admin\ContentController@select')->name('dashboard.content.select');
         Route::post('/create', 'Admin\ContentController@selectAction')->name('dashboard.content.selectAction');
-        Route::get('/create/{type}', 'Admin\ContentController@create')->name('dashboard.content.create');
+        Route::get('/create/{id}', 'Admin\ContentController@create')->name('dashboard.content.create');
         Route::get('/{id}', 'Admin\ContentController@show')->name('dashboard.content.show');
         Route::put('/{id}', 'Admin\ContentController@update')->name('dashboard.content.update');
         Route::delete('/{id}', 'Admin\ContentController@destroy')->name('dashboard.content.destroy');
     });
 });
+
+Route::get('{slug}', 'HomeController@content')->name('content')->where('slug', '.*');;

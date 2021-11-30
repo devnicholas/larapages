@@ -30,22 +30,25 @@ class ContentController extends Controller
     {
         try {
             $type = ContentTypes::find($request->type);
-            return redirect()->route('dashboard.' . $this->slugRoutes . '.create', ['type' => $type->slug]);
+            return redirect()->route('dashboard.' . $this->slugRoutes . '.create', ['id' => $type->id]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao processar: ' . $e->getMessage());
         }
     }
     public function store(Request $request)
     {
-        $this->validate($request, $this->defaultRules, $this->messages);
+        $this->validate($request, [...$this->defaultRules, 'slug' => 'unique:contents'], $this->messages);
         $data = $request->only($this->fields);
         try {
             $type = ContentTypes::find($request->content_type_id);
             if($type->single){
                 $data['title'] = $type->title;
-                $data['slug'] = $type->slug;
-            }else{
-                $data['slug'] = $type->slug.'/'.$data['slug'];
+            }
+            if($request->has('uploads')){
+                foreach($request->uploads as $field => $file){
+                    $name = Helper::uploadFile($file);
+                    $data['fields'][$field] = $name;
+                }
             }
             $data['fields'] = json_encode($data['fields']);
             Contents::create($data);
@@ -54,25 +57,26 @@ class ContentController extends Controller
             return redirect()->back()->with('error', 'Ocorreu um erro ao salvar: ' . $e->getMessage());
         }
     }
-    public function create($type)
+    public function create($id)
     {
-        $type = ContentTypes::where('slug', $type)->first();
+        $type = ContentTypes::find($id);
         return view('admin.' . $this->slugRoutes . '.create', compact('type'));
     }
     public function show($id)
     {
         $item = Contents::with('contentType')->find($id);
-        // dd($item);
         return view('admin.' . $this->slugRoutes . '.show', compact('item'));
     }
     public function update($id, Request $request)
     {
-        // dd($request->all());
         $this->validate($request, $this->defaultRules, $this->messages);
         
         try {
-            $item = Contents::find($id);
+            $item = Contents::with('contentType')->find($id);
             $data = $request->only($this->fields);
+            if($item->contentType->single){
+                $data['title'] = $item->contentType->title;
+            }
             if($request->has('uploads')){
                 foreach($request->uploads as $field => $file){
                     $name = Helper::uploadFile($file);

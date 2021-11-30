@@ -22,10 +22,6 @@
                             <input type="text" name="title" class="form-control" value="{{ $item->title }}">
                         </div>
                         <div class="form-group">
-                            <label>Slug</label>
-                            <input type="text" name="slug" class="form-control" value="{{ $item->slug }}">
-                        </div>
-                        <div class="form-group">
                             <label>Template</label>
                             <input type="text" name="template" class="form-control" value="{{ $item->template }}">
                         </div>

@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('superAdmin', function ($user) {
+            return $user->email == 'admin@mail.com';
+        });
     }
 }
