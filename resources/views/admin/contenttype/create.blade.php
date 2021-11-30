@@ -42,8 +42,9 @@
                                     <option value>Tipo do campo</option>
                                     <option value="text">Texto</option>
                                     <option value="textarea">Textarea</option>
+                                    <option value="editor">Editor</option>
                                     <option value="boolean">Booleano</option>
-                                    <option value="file">Arquivo</option>
+                                    <option value="image">Imagem</option>
                                 </select>
                             </div>
                         </div>
@@ -74,8 +75,9 @@
                         <option value>Tipo do campo</option>
                         <option value="text">Texto</option>
                         <option value="textarea">Textarea</option>
+                        <option value="editor">Editor</option>
                         <option value="boolean">Booleano</option>
-                        <option value="file">Arquivo</option>
+                        <option value="image">Imagem</option>
                     </select>
                     <button class="btn badge badge-danger removeField">
                         <i class="fas fa-times"></i>

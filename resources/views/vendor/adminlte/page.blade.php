@@ -243,6 +243,11 @@
                 url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json'
             }
         })
+        ClassicEditor
+            .create( document.querySelector( '.editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
     @stack('js')
     @yield('js')

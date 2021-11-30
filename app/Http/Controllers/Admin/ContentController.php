@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\DB\Contents;
 use App\Models\DB\ContentTypes;
@@ -60,16 +61,24 @@ class ContentController extends Controller
     }
     public function show($id)
     {
-        $item = Contents::find($id);
+        $item = Contents::with('contentType')->find($id);
+        // dd($item);
         return view('admin.' . $this->slugRoutes . '.show', compact('item'));
     }
     public function update($id, Request $request)
     {
+        // dd($request->all());
         $this->validate($request, $this->defaultRules, $this->messages);
         
         try {
             $item = Contents::find($id);
             $data = $request->only($this->fields);
+            if($request->has('uploads')){
+                foreach($request->uploads as $field => $file){
+                    $name = Helper::uploadFile($file);
+                    $data['fields'][$field] = $name;
+                }
+            }
             $item->update($data);
 
             return redirect()->route('dashboard.' . $this->slugRoutes . '.index')->with('success', 'Item salvo com sucesso');

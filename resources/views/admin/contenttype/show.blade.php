@@ -44,8 +44,9 @@
                                     <option value>Tipo do campo</option>
                                     <option value="text" {{ $field->type == 'text' ? 'selected' : '' }}>Texto</option>
                                     <option value="textarea" {{ $field->type == 'textarea' ? 'selected' : '' }}>Textarea</option>
+                                    <option value="editor" {{ $field->type == 'editor' ? 'selected' : '' }}>Editor</option>
                                     <option value="boolean" {{ $field->type == 'boolean' ? 'selected' : '' }}>Booleano</option>
-                                    <option value="file" {{ $field->type == 'file' ? 'selected' : '' }}>Arquivo</option>
+                                    <option value="image" {{ $field->type == 'image' ? 'selected' : '' }}>Imagem</option>
                                 </select>
                                 <button class="btn badge badge-danger removeField">
                                     <i class="fas fa-times"></i>
@@ -76,8 +77,9 @@
                         <option value>Tipo do campo</option>
                         <option value="text">Texto</option>
                         <option value="textarea">Textarea</option>
+                        <option value="editor">Editor</option>
                         <option value="boolean">Booleano</option>
-                        <option value="file">Arquivo</option>
+                        <option value="image">Imagem</option>
                     </select>
                     <button class="btn badge badge-danger removeField">
                         <i class="fas fa-times"></i>

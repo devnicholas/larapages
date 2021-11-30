@@ -350,5 +350,16 @@ return [
                 ]
             ],
         ],
+        [
+            'name' => 'CKEditor',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js',
+                ]
+            ],
+        ],
     ],
 ];

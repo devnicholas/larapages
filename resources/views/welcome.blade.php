@@ -88,7 +88,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                LaraCommerce
+                LaraPages
             </div>
 
             <div class="links">

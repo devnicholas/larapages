@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('dashboard.content.store') }}" method="post">
+                    <form action="{{ route('dashboard.content.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="content_type_id" value="{{ $type->id }}">
                         @if(!$type->single)

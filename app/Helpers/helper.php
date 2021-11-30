@@ -21,34 +21,9 @@ class Helper
 
         return $name;
     }
-    public static function getAttributeFromProduct(Product $product, $id)
+    public static function getFieldValue($slug, $fields)
     {
-        foreach ($product->attributes as $attr) {
-            if($attr->id === $id){
-                return $attr->pivot->value;
-            }
-        }
-        return '';
-    }
-    public static function translateStatus($status)
-    {
-        $allStatus = [
-            'new' => 'Novo',
-            'completed' => 'Completo',
-            'canceled' => 'Cancelado'
-        ];
-        return $allStatus[$status];
-    }
-    public static function translateShippingValue($value)
-    {
-        $allValues = [
-            'checkpoint' => 'Local de retirada',
-            'region' => 'Bairro',
-            'street' => 'Endereço',
-            'number' => 'Número',
-            'complement' => 'Complemento',
-            'reference_point' => 'Ponto de referência'
-        ];
-        return $allValues[$value];
+        $field = json_decode($fields, true);
+        return !empty($field[$slug]) ? $field[$slug] : '';
     }
 }

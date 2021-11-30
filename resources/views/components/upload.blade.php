@@ -1,9 +1,12 @@
-<div class="upload-component">
-    <div class="preview">
-        <img src="{{ $value ?? '' }}" onerror="this.src='/placeholder.png'" id="preview-{{$name}}"/>
+<div class="form-group">
+    <label>{{ $field->name }}</label>
+    <div class="upload-component">
+        <div class="preview">
+            <img src="{{ asset('storage/uploads/'.Helper::getFieldValue($field->slug, $item->fields)) }}" onerror="this.src='/placeholder.png'" id="preview-{{$field->slug}}" />
+        </div>
+        <label for="{{ $field->slug }}" class="btn btn-info">Alterar</label>
+        <input type="file" name="uploads[{{ $field->slug }}]" id="{{ $field->slug }}" class="{{ $field->slug }}">
     </div>
-    <label for="{{ $name }}" class="btn btn-info">Alterar</label>
-    <input type="file" name="{{ $name }}" id="{{ $name }}">
 </div>
 
 @section('css')
@@ -13,16 +16,20 @@
         justify-content: flex-start;
         align-items: center;
     }
+
     .upload-component .preview {
         width: 50px;
         margin-right: 10px;
     }
+
     .upload-component .preview img {
         max-width: 100%;
     }
+
     .upload-component input {
         display: none;
     }
+
     .upload-component label {
         margin: 0;
         cursor: pointer;
@@ -31,10 +38,11 @@
 @endsection
 @section('js')
 <script>
-    $('#{{$name}}').on('change', function(event) {
+    $('.{{$field->slug}}').on('change', function(event) {
+        console.log(event.target.files[0]);
         const reader = new FileReader();
         reader.onload = function() {
-            const output = document.getElementById('preview-{{$name}}');
+            const output = document.getElementById('preview-{{$field->slug}}');
             output.src = reader.result;
         }
         reader.readAsDataURL(event.target.files[0]);
