@@ -36,7 +36,7 @@
 <body>
     <div id="app">
         @include('globals.header')
-        
+        @yield('content')
         @include('globals.footer')   
     </div>
     <!-- Scripts -->

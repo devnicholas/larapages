@@ -5,34 +5,5 @@
 @endsection
 
 @section('content')
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-            <a href="{{ url('/dashboard') }}">Home</a>
-            @else
-            <a href="{{ route('login') }}">Login</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-            @endif
-            @endauth
-        </div>
-        @endif
-
-        <div class="content">
-            <div class="title m-b-md">
-                <example-component/>
-            </div>
-
-            <div class="links">
-                <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://github.com/devnicholas/larapages">GitHub</a>
-            </div>
-
-            @if (session('error'))
-            <div class="error">{{ session('error') }}</div>
-            @endif
-        </div>
-    </div>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque repellendus maiores sapiente assumenda similique laborum deleniti laudantium odio, facilis atque est sint reprehenderit a deserunt sit ullam expedita voluptatum, exercitationem placeat asperiores recusandae tempore aut. Molestiae aliquam recusandae ad, accusantium corporis voluptatum consequuntur error id temporibus harum est nobis. Magni pariatur fugiat doloribus reprehenderit similique a earum consequuntur suscipit debitis quae provident quisquam nihil, rerum atque, ab obcaecati alias eaque cumque ipsam natus? Natus blanditiis, in quod sequi, animi pariatur fugit nihil tenetur, dolor labore quidem. Nesciunt accusamus blanditiis aspernatur labore ex ea dignissimos excepturi rerum laboriosam esse maiores sint, sunt cum possimus quisquam officiis assumenda! Ea voluptatem quas laboriosam doloribus libero tempore quibusdam, porro quasi. Architecto, praesentium minus consectetur nesciunt corrupti esse, adipisci necessitatibus natus nihil autem repellendus delectus consequatur maxime deleniti optio voluptatem. Sapiente aspernatur laboriosam qui exercitationem similique sint consectetur nostrum aut, suscipit libero modi aperiam accusamus saepe iste unde doloremque necessitatibus inventore quod, nulla atque perspiciatis numquam odio. Dolor sed nulla quibusdam, consequuntur nemo suscipit dolores soluta est, ex ut dolorum, atque quidem fuga? Perspiciatis deleniti neque aut dolor repellendus odit eveniet hic officia quidem at vero, quae, voluptate sed facilis, soluta eum officiis corporis culpa cumque impedit tenetur necessitatibus dolorum id? Ipsum voluptatibus rem laboriosam sed maiores ipsa iure, commodi quis eveniet veritatis minima at sit quibusdam deserunt ducimus nisi molestias similique? Hic debitis modi error! Quisquam explicabo a at ducimus perferendis consectetur est pariatur beatae. Mollitia repudiandae repellat tempora accusamus, atque libero commodi quia tenetur minus asperiores voluptatem officiis ab, dolore cum necessitatibus similique, esse quisquam consequuntur blanditiis veritatis. Error praesentium modi, at natus provident et ipsum deleniti iste iure voluptate nihil minima. Voluptatibus, molestias id provident corporis rem exercitationem accusamus esse architecto, minus, quo neque adipisci voluptates! Sapiente neque a magnam ut nostrum, aut culpa harum autem, aspernatur natus obcaecati dolores animi minus assumenda dicta eligendi incidunt illo dolore repellat aliquid perspiciatis veritatis possimus delectus! Inventore debitis, esse illum animi deleniti harum quibusdam ipsum consectetur suscipit maiores aspernatur libero optio eos est provident nulla distinctio blanditiis atque expedita ullam totam velit. Facilis ipsam, beatae exercitationem aut ullam quos. Saepe nesciunt consequatur optio qui, blanditiis voluptatem soluta, ullam exercitationem facere labore sequi incidunt harum totam voluptatum dolor. Doloribus, doloremque? Dolores molestiae maxime enim, ipsa rerum, non voluptatem rem animi mollitia autem iste voluptatum modi doloremque voluptate? Sequi ab blanditiis molestiae molestias totam reprehenderit numquam.
 @endsection

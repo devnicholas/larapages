@@ -25,6 +25,7 @@
 
             <div class="collapse navbar-collapse pt-3 pt-lg-0" id="mainNavbar">
                 <ul class="navbar-nav">
+                    @if (Route::has('login'))
                     @auth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/dashboard') }}">Home</a>
@@ -40,6 +41,8 @@
                     
                     @endif
                     @endauth
+                    @endif
+                   
                     <!-- <li class="nav-item">
                         <a class="nav-link call-to-action" href="#contact">
                             <button class="btn">
