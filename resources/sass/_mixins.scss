@@ -1,0 +1,181 @@
+@mixin position ($position, $top: null, $right: null, $left: null, $bottom: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    left: $left;
+    bottom: $bottom;
+}
+
+@mixin absolute ($args...) {
+    @include position(absolute, $args...);
+}
+
+@mixin fixed ($args...) {
+    @include position(fixed, $args...);
+}
+
+@mixin relative ($args...) {
+    @include position(relative, $args...);
+}
+
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+@mixin transition($prop: easy, $time: .3s){
+    -webkit-transition: $prop $time;
+    -moz-transition: $prop $time;
+    -ms-transition: $prop $time;
+    -o-transition: $prop $time;
+    transition: $prop $time;
+}
+
+$breakpoints: (
+        "phone-ultra-small":  340px,
+        "phone-small":  380px,
+        "phone":        415px,
+        "phone-wide":   480px,
+        "phablet":      576px,
+        "tablet-small": 640px,
+        "tablet":       768px,
+        "tablet-large": 992px,
+        "tablet-wide":  1024px,
+        "desktop":      1280px,
+        "desktop-large":1366px,
+        "desktop-wide": 1445px,
+        "desktop-extra-large": 1600px,
+        "desktop-full": 1920px,
+);
+
+
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+
+@mixin bg ($url: null) {
+    background: {
+        image: url($url);
+        repeat: no-repeat;
+        position: center;
+        size: cover;
+    }
+}
+
+
+@mixin css3-prefix($prop, $value) {
+    -webkit-#{$prop}: #{$value};
+    -moz-#{$prop}: #{$value};
+    -ms-#{$prop}: #{$value};
+    -o-#{$prop}: #{$value};
+    #{$prop}: #{$value};
+}
+// USAGE
+// @include css3-prefix(transform, scale3d(2.5, 2, 1.5));
+
+@mixin vertical-center {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+// USAGE
+// include vertical-center();
+
+
+/* FONT FACE */
+@mixin font-face($name, $file) {
+    @font-face {
+        font-family: "#{$name}";
+        src: url("../fonts/#{$file}.eot");
+        src: url("../fonts/#{$file}.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/#{$file}.woff") format("woff"),
+        url("../fonts/#{$file}.ttf") format("truetype"),
+        url("../fonts/#{$file}.svg?#webfont") format("svg");
+    }
+}
+// USAGE
+// @include font-face("My Font", my-font);
+
+
+// ANIMAÇÕES
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+// USAGE
+// @include keyframes(background) {
+//     0% {
+//       background: white;
+//     }
+//     50% {
+//       background: lightblue;
+//     }
+//     100% {
+//       background: royalblue;
+//     }
+// }
+
+
+// ARROW
+@mixin arrow($direction: down, $size: 5px, $color: #555) {
+    width: 0;
+    height: 0;
+    @if ($direction == left) {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+    }
+    @else if ($direction == right) {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+    }
+    @else if ($direction == down) {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+    }
+    @else {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+    }
+}
+// @include arrow();
+// @include arrow(up, 10px, #efefef);
+
+
+// RESPONSIVE
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}

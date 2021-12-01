@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.site')
 
 @section('css')
 
@@ -88,7 +88,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                LaraPages
+                <example-component/>
             </div>
 
             <div class="links">
