@@ -30,6 +30,9 @@ class ContentController extends Controller
     {
         try {
             $type = ContentTypes::find($request->type);
+            if($type->single && Contents::where('content_type_id', $request->type)->count() > 0) {
+                return redirect()->back()->with('error', 'Tipo de conteúdo já existe');
+            }
             return redirect()->route('dashboard.' . $this->slugRoutes . '.create', ['id' => $type->id]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao processar: ' . $e->getMessage());

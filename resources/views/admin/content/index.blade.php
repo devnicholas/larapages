@@ -24,6 +24,7 @@
                         <tr>
                             <th>#ID</th>
                             <th>Título</th>
+                            <th>Tipo</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                         <tr>
                             <td>#{{ $item->id }}</td>
                             <td>{{ $item->title }}</td>
+                            <td>{{ $item->contentType->title }}</td>
                             <td>
                                 <form action="{{ route('dashboard.content.destroy', $item->id) }}" method="post">
                                     <a href="{{ route('dashboard.content.show', $item->id) }}" class="btn badge badge-primary">
