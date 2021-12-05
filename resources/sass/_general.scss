@@ -1,0 +1,81 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+ul {
+    list-style: none;
+}
+
+.section {
+    background-color: #dddddd;
+}
+
+@each $size in '10' '20' '30' '40' '50' '60' '70' '80' '90' '100' '115' '120' '125' '130' '135' '140'  {
+    .pt-#{$size} {
+        padding-top: #{$size}px;
+    }
+    .pb-#{$size} {
+        padding-bottom: #{$size}px;
+    }
+    .mt-#{$size} {
+        margin-top: #{$size}px;
+    }
+    .mb-#{$size} {
+        margin-bottom: #{$size}px;
+    }
+    .py-#{$size} {
+        padding-top: #{$size}px;
+        padding-bottom: #{$size}px;
+    }
+    .px-#{$size} {
+        padding-left: #{$size}px;
+        padding-right: #{$size}px;
+    }
+
+    @media (min-width: 280px) and (max-width: 550px) {
+        .pt-#{$size} {
+            padding-top: calc(#{$size}px / 1.5);
+        }
+        .pb-#{$size} {
+            padding-bottom: calc(#{$size}px / 1.5);
+        }
+        .mt-#{$size} {
+            margin-top: calc(#{$size}px / 1.5);
+        }
+        .mb-#{$size} {
+            margin-bottom: calc(#{$size}px / 1.5);
+        }
+        .py-#{$size} {
+            padding-top: calc(#{$size}px / 1.5);
+            padding-bottom: calc(#{$size}px / 1.5);
+        }
+        .px-#{$size} {
+            padding-left: calc(#{$size}px / 1.5);
+            padding-right: calc(#{$size}px / 1.5);
+        }
+    }
+}
+
+@each $lines in '2' '3' '4' '5' {
+    .max-lines-#{$lines} {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: #{$lines};
+    }
+}

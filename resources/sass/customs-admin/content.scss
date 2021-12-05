@@ -1,0 +1,29 @@
+.content-wrapper {
+    background-color: #ebedef;
+
+    .card-body,
+    .card-header,
+    .dataTables_wrapper {
+        padding: .8rem;
+    }
+
+    .card {
+        box-shadow: none;
+    }
+
+    .card {
+        &-header {
+            .btn {
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        .btn,
+        .paginate_button {
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+    }
+}

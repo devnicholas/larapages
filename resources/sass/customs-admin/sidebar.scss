@@ -1,0 +1,26 @@
+aside.main-sidebar.sidebar-dark-primary {
+    background-color: $active_color;
+    box-shadow: none !important;
+    overflow: hidden;
+
+    .sidebar {
+        margin: 0 -.5rem;
+    }
+
+    .nav-link {
+        border-radius: 0;
+        color: #fff;
+        padding-left: 1.7rem;
+        // text-align: center;
+
+        &.active {
+            background-color: rgba(0,0,0,.6) !important;
+        }
+    }
+}
+
+.main-sidebar.sidebar-dark-primary.elevation-4:hover {
+    // .nav-link {
+    //     padding-left: 1rem;
+    // }
+}

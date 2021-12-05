@@ -8,6 +8,7 @@
     <title>@yield('title_prefix', config('adminlte.title_prefix', ''))
 @yield('title', config('adminlte.title', 'AdminLTE 3'))
 @yield('title_postfix', config('adminlte.title_postfix', ''))</title>
+    
     @if(! config('adminlte.enabled_laravel_mix'))
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -24,8 +25,10 @@
     @else
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @endif
+
+    <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
 	
-    @yield('meta_tags')
+    @yield('meta_tags')    
 
     @if(config('adminlte.use_ico_only'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
@@ -64,6 +67,8 @@
 @else
 <script src="{{ mix('js/app.js') }}"></script>
 @endif
+
+<script src="{{ mix('js/admin.js') }}"></script>
 
 </body>
 </html>
