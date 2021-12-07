@@ -16,10 +16,23 @@ class ContentController extends Controller
     ];
     private $slugRoutes = 'content';
 
-    public function index()
+    public function index(Request $request)
     {
-        $items = Contents::get();
-        return view('admin.' . $this->slugRoutes . '.index', compact('items'));
+        $items = new Contents();
+        $type = $request->input('type');
+        if($type) {
+            $items = $items->where('content_type_id', $type);
+        }
+        $single = $request->input('single');
+        if($single) {
+            $single = $single == 'true' ? true : false;
+            $items = $items->whereHas('contentType', function($query) use ($single) {
+                $query->where('single', $single);
+            });
+        }
+        $items = $items->get();
+        $types = ContentTypes::where('single', false)->get();
+        return view('admin.' . $this->slugRoutes . '.index', compact('items', 'types'));
     }
     public function select()
     {

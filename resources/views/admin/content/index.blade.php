@@ -9,11 +9,22 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="title w-50">
                         <p class="mb-0 text-bold">
-                            Contents
+                            Conteúdos
                         </p>
                     </div>
 
-                    <div class="actions text-right w-50">
+                    <div class="actions text-right w-50 d-flex">
+                        <select class="form-control mr-1" id="single">
+                            <option value>Todos os tipos</option>
+                            <option value="true" {{ request()->get('single') == 'true' ? 'selected' : '' }}>Páginas</option>
+                            <option value="false" {{ request()->get('single') == 'false' ? 'selected' : '' }}>Estrutura</option>
+                        </select>
+                        <select class="form-control mr-1" id="type">
+                            <option value="">Todas as estruturas</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type->id }}" {{ request()->get('type') == $type->id ? 'selected' : '' }}>{{ $type->title }}</option>
+                            @endforeach
+                        </select>
                         <a class="btn btn-primary" href="{{ route('dashboard.content.select') }}">
                             Adicionar
                         </a>
@@ -54,4 +65,26 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script defer>
+    $(document).ready(function() {
+        $('#single').change(function() {
+            var single = $(this).val();
+            if (single) {
+                window.location.href = "{{ route('dashboard.content.index') }}" + "?single=" + single;
+            } else {
+                window.location.href = "{{ route('dashboard.content.index') }}";
+            }
+        });
+        $('#type').change(function() {
+            var type = $(this).val();
+            if (type) {
+                window.location.href = "{{ route('dashboard.content.index') }}" + "?type=" + type;
+            } else {
+                window.location.href = "{{ route('dashboard.content.index') }}";
+            }
+        });
+    });
+</script>
 @endsection
