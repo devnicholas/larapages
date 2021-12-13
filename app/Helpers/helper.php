@@ -2,8 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Models\DB\Product;
-
 class Helper
 {
     public static function numberFormat(string $value)

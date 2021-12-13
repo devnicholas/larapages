@@ -52,6 +52,14 @@ Route::prefix('dashboard')->middleware('auth.admin')->group(function(){
         Route::put('/{id}', 'Admin\ContentController@update')->name('dashboard.content.update');
         Route::delete('/{id}', 'Admin\ContentController@destroy')->name('dashboard.content.destroy');
     });
+    
+    Route::prefix('assets')->group(function(){
+        Route::get('/', 'Admin\AssetsController@index')->name('assets');
+        Route::post('/new-folder', 'Admin\AssetsController@newFolder')->name('assets.newFolder');
+        Route::delete('/folder/{folder}', 'Admin\AssetsController@deleteFolder')->name('assets.deleteFolder');
+        Route::post('/new-file', 'Admin\AssetsController@newFile')->name('assets.newFile');
+        Route::delete('/file', 'Admin\AssetsController@deleteFile')->name('assets.deleteFile');
+    });
 });
 
 Route::get('{slug}', 'HomeController@content')->name('content')->where('slug', '.*');;

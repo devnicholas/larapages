@@ -219,6 +219,15 @@ return [
             'icon'          => 'fas fa-fw fa-user',
         ],
         [
+            'key'           => 'contents',
+            'header'        => 'CONTEÚDOS',
+        ],
+        [
+            'text'          => 'Arquivos',
+            'route'         => 'assets',
+            'icon'          => 'fas fa-fw fa-file',
+        ],
+        [
             'key'           => 'configurations',
             'header'        => 'CONFIGURAÇÕES',
             'can'           => 'superAdmin',

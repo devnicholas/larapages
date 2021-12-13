@@ -27,17 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            $event->menu->addBefore('configurations', 'CONTEÚDOS');
-            $event->menu->addBefore(
-                'configurations',
-                [
-                    'text' => 'Páginas',
-                    'url' => route('dashboard.content.index', ['single' => 'true']),
-                    'icon' => 'fas fa-fw fa-file-alt',
-                ]
-            );
-            $event->menu->addBefore(
-                'configurations',
+            $event->menu->addAfter(
+                'contents',
                 [
                     'key' => 'structure',
                     'text' => 'Estruturas',
@@ -58,6 +49,14 @@ class AppServiceProvider extends ServiceProvider
                 ];
             });
             $event->menu->addIn('structure', ...$subitems);
+            $event->menu->addAfter(
+                'contents',
+                [
+                    'text' => 'Páginas',
+                    'url' => route('dashboard.content.index', ['single' => 'true']),
+                    'icon' => 'fas fa-fw fa-file-alt',
+                ]
+            );
         });
     }
 }
